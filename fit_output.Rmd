@@ -1,0 +1,24 @@
+---
+output:
+  word_document:
+    reference_docx: template.docx
+params:
+  results: NA
+  metrics: NA
+  h1: NA
+---
+
+`r download.file('http://argonaut.is.ed.ac.uk/public/template.docx', 'template.docx', mode = 'wb')` 
+
+# `r params$h1`
+
+```{r, echo=FALSE}
+knitr::kable(params$results, row.names = FALSE, align = c("l", "l", 
+																													"r", "r", "r", "r", "r", "r", "r"))
+```
+
+```{r, echo=FALSE}
+if(!is.null(params$metrics)){
+	knitr::kable(params$metrics, row.names = FALSE, col.names = "Metrics")
+}
+```
